@@ -327,6 +327,10 @@ you should place your code here."
     ;; (setq garbage-collection-messages t)
     )
 
+  ;; Underscore "_" is not a word character
+  ;; https://github.com/emacs-evil/evil
+  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
   ;; Set escape keybinding to ";g"
   (setq-default evil-escape-key-sequence ";g")
   )
