@@ -140,7 +140,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Courier New"
+   ;; dotspacemacs-default-font '("Courier New"
+   dotspacemacs-default-font '("DejaVu Sans Mono"
                                :size 16
                                :weight normal
                                :width normal
@@ -318,6 +319,14 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq ns-use-srgb-colorspace nil)
+  (setq powerline-default-separator 'slant)
+  ;; (setq powerline-default-separator 'arrow)
+
+  ;; 中文字体的设置，同时解决中英文字体宽度不一致的问题（org-mode的表格可以中英文对齐）。
+  ;; 而且解决了中文字体导致emacs卡的现象。
+  (dolist (charset '(kana han cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font) charset
+                      (font-spec :family "微软雅黑" :size 16)))
 
   (when (eq system-type 'windows-nt)
     (setq gc-cons-threshold (* 512 1024 1024))
