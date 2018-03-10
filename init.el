@@ -333,6 +333,7 @@ you should place your code here."
 
   ;; Set escape keybinding to ";g"
   (setq-default evil-escape-key-sequence ";g")
+  (setq-default evil-escape-delay 0.3)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
